@@ -86,3 +86,9 @@
 ## License
 
 GPL-3.0. Original work © [Droid-Deck](https://github.com/Droid-Deck/DroidDeck).
+## 截图示例
+
+| DroidDeck 启动器 | Steam 客户端 | 设置页面 |
+|------------------|--------------|----------|
+| ![Launcher](screenshots/01-launcher.jpg) | ![Steam](screenshots/02-steam-client.jpg) | ![Settings](screenshots/03-settings.jpg) |
+| 完全中文界面 | Steam 客户端显示中文 | 设置界面完全汉化 |
