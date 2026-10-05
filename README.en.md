@@ -2,66 +2,44 @@
 
 [中文](README.md) | **English**
 
-A complete Chinese localization of [DroidDeck](https://github.com/Droid-Deck/DroidDeck) 0.3.0, with built-in CJK fonts, ready to use out of the box.
+> **📌 This repository has served its purpose.**
+> DroidDeck now ships with full Chinese (Simplified, Taiwan Traditional, Hong Kong Traditional) and CJK fonts built in.
+> For a Chinese build, download the **[official Releases](https://github.com/Droid-Deck/DroidDeck/releases)** — you no longer need the patched APK here.
 
-## Differences from Upstream
+---
 
-| Feature | Upstream | This Build |
-|---|---|---|
-| UI Language | English/Spanish only | ✅ Full Simplified Chinese (928 strings) |
-| CJK Fonts | None (shows □□□) | ✅ Bundled Noto Sans CJK (16MB) |
-| Font Deploy | Manual install | ✅ Auto-deployed on session start |
-| Terminology | No standard | ✅ steam-l10n glossary (1200+ entries) |
-| Chinese Locale | None | ✅ zh-rCN / zh-rTW / zh coverage |
-| Android 16 (API 36) | `File(File, String)` removed | ✅ Fixed to `File(String, String)` |
+## What this repository is now
 
-## Install
+An **archive and reference for DroidDeck's Chinese localization**.
 
-1. Download [DroidDeck-0.3.0-zhCN-font.apk](https://github.com/Lightfallingonionroom/droiddeck-zh-cn/releases/download/v0.3.0-zhCN/DroidDeck-0.3.0-zhCN-font.apk)
-2. **Uninstall upstream DroidDeck first** (different signature)
-3. Install this APK
-4. After first launch: Developer options → Disable "Restrict child processes" (or use in-app "Fix it for me")
+The story: in October 2026 DroidDeck shipped in English and Spanish only, and Chinese text rendered as □□□ (no CJK font). I built this localization and submitted the 62 strings upstream was missing via [PR #232](https://github.com/Droid-Deck/DroidDeck/pull/232), which was merged. The team then landed a more complete multilingual scheme, so Chinese became an official, first-class language.
 
-## Localization Coverage
+What is **still useful** here:
 
-- **928 UI strings**: Launcher, Settings, Components, Store, Updates, Sessions, Controls, Game Management — all interfaces
-- **Unified terminology**: steam-l10n glossary (Steam/Proton/DXVK/Gamescope/Turnip/LSFG and other proper nouns)
-- **Chinese locale support**: values-zh-rCN / values-zh-rTW / values-zh (covers Simplified, Traditional, and all Chinese devices)
-
-## Screenshots
-
-| DroidDeck Launcher | Steam Client | Settings |
-|---|---|---|
-| ![Launcher](screenshots/01-launcher.jpg) | ![Steam](screenshots/02-steam-client.jpg) | ![Settings](screenshots/03-settings.jpg) |
-| Fully Chinese UI | Steam client shows Chinese | Settings fully localized |
-
-## Technical Details
-
-- **Resource merge**: 1011 strings (928 UI + 83 Material Components library translations)
-- **Font injection**: smali patch in `SessionActivity.surfaceCreated()` auto-deploys fonts to `linuxfs/usr/share/fonts/`
-- **Android 16 fix**: `File(File, String)` constructor removed in API 36 — patched to use `File(String, String)`
-- **Signature**: debug.keystore (different from upstream, requires uninstalling upstream first)
-
-## Files
-
-| File | Description |
+| Content | Use |
 |---|---|
-| `DroidDeck-0.3.0-zhCN-font.apk` | Localized APK (45.4MB, includes CJK font) |
-| `strings-zhCN.xml` | Complete Chinese resource file (928 entries, ready for source build) |
-| `steam-l10n-terms.md` | Steam/DroidDeck terminology glossary (1200+ entries) |
+| `steam-l10n-terms.md` | A **1200+ entry glossary** for Steam / Proton / DXVK / Gamescope and friends — handy for translating anything in the Steam ecosystem |
+| `screenshots/` | Reference images of the Chinese UI |
+| `strings-zhCN.xml` | The full Simplified Chinese resource file (historical, for reference) |
 
-## Build from Source
+## About the old patched APK
 
-Copy `strings-zhCN.xml` to `app/src/main/res/values-zh-rCN/strings.xml` in the upstream source, then follow the official build process.
+`DroidDeck-0.3.0-zhCN-font.apk` (see Releases) is the **old 0.3.0-based patch** and should be treated as **archive material only**:
 
-## Disclaimer
+- Based on 0.3.0 — **missing later upstream features**
+- Uses a debug signature; the official app must be uninstalled first
+- The official build now includes Chinese and fonts, so **there is no reason to use it**
 
-- This project is a community localization derivative of DroidDeck, licensed under **GPL-3.0**
-- Original work © [Droid-Deck](https://github.com/Droid-Deck/DroidDeck)
-- Localization work (translated strings, glossary, font injection patch) contributed by the community
+## Upstream localization status
 
-## Acknowledgments
+| Item | Status |
+|---|---|
+| [PR #232](https://github.com/Droid-Deck/DroidDeck/pull/232) (62 strings) | ✅ Merged into `main` |
+| Official multilingual scheme (zh-rCN / zh-rTW / zh-rHK + language setting) | In progress upstream |
+| CJK fonts (shared from Android's system Noto, nothing downloaded) | In progress upstream |
 
-- Upstream: [Droid-Deck/DroidDeck](https://github.com/Droid-Deck/DroidDeck)
-- Translation glossary: [steam-l10n](steam-l10n-terms.md) (self-built)
-- Font: [Noto Sans CJK SC](https://github.com/notofonts/noto-cjk) (SIL Open Font License)
+## Credits
+
+- Upstream: [Droid-Deck/DroidDeck](https://github.com/Droid-Deck/DroidDeck) (GPL-3.0)
+- Fonts: [Noto Sans CJK](https://github.com/notofonts/noto-cjk) (SIL Open Font License)
+- Terminology: [steam-l10n](steam-l10n-terms.md)
