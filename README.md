@@ -2,66 +2,44 @@
 
 **中文** | [English](README.en.md)
 
-基于 [DroidDeck](https://github.com/Droid-Deck/DroidDeck) 0.3.0 的完整中文本地化版本，内置中文字体，开箱即用。
+> **📌 本仓库已完成历史使命。**
+> DroidDeck 官方已内置完整中文（含简体、台湾繁体、香港繁体）和中文字体。
+> 想用中文版，请直接下载 **[官方 Releases](https://github.com/Droid-Deck/DroidDeck/releases)**，无需再使用本仓库的汉化包。
 
-## 与原版对比
+---
 
-| 特性 | 原版 | 本汉化版 |
-|---|---|---|
-| 界面语言 | 仅英文/西语 | ✅ 完整简体中文（928 条字符串） |
-| 中文字体 | 无（显示 □□□） | ✅ 内置 Noto Sans CJK（16MB） |
-| 字体部署 | 需手动安装 | ✅ 会话启动时自动部署 |
-| 术语一致性 | 无统一标准 | ✅ 基于 steam-l10n 术语表（1200+ 条） |
-| 中文语言匹配 | 无 | ✅ zh-rCN / zh-rTW / zh 全覆盖 |
-| Android 16 兼容性 | `File(File, String)` 已移除 | ✅ 修复为 `File(String, String)` |
+## 这个仓库现在是什么
 
-## 安装
+一个 **DroidDeck 中文本地化的存档与参考资料库**。
 
-1. 下载 [DroidDeck-0.3.0-zhCN-font.apk](https://github.com/Lightfallingonionroom/droiddeck-zh-cn/releases/download/v0.3.0-zhCN/DroidDeck-0.3.0-zhCN-font.apk)
-2. **卸载原版 DroidDeck**（签名不同，必须先卸载）
-3. 安装汉化版 APK
-4. 首次启动后：设置 → 开发者选项 → 关闭「限制子进程」（或用应用内的「帮我修复」）
+故事是这样的：2026 年 10 月，DroidDeck 只有英文和西班牙语，中文界面显示为 □□□（缺字体）。我做了这套汉化，并把 62 条上游缺失的翻译通过 [PR #232](https://github.com/Droid-Deck/DroidDeck/pull/232) 提交给了官方，已被合并。随后官方团队推出了更完整的多语言方案，中文正式进入官方版本。
 
-## 汉化范围
+所以本仓库现在保留两样**仍然有用**的东西：
 
-- **928 条界面字符串**：主界面、设置、组件、商店、更新、会话、控制、游戏管理等全部界面
-- **术语统一**：遵循 steam-l10n 术语表（Steam/Proton/DXVK/Gamescope/Turnip/LSFG 等专有名词统一译名）
-- **中文语言支持**：values-zh-rCN / values-zh-rTW / values-zh（覆盖简中、繁中及所有中文设备）
-
-## 截图示例
-
-| DroidDeck 启动器 | Steam 客户端 | 设置页面 |
-|---|---|---|
-| ![Launcher](screenshots/01-launcher.jpg) | ![Steam](screenshots/02-steam-client.jpg) | ![Settings](screenshots/03-settings.jpg) |
-| 完全中文界面 | Steam 客户端显示中文 | 设置界面完全汉化 |
-
-## 技术细节
-
-- **资源合并**：1011 条字符串（928 条界面 + 83 条 Material Components 库翻译）
-- **字体注入**：smali 代码在 `SessionActivity.surfaceCreated()` 中自动部署字体到 `linuxfs/usr/share/fonts/`
-- **Android 16 适配**：修复 `File(File, String)` 构造函数在 API 36 的兼容性问题（API 36 已移除该构造函数）
-- **签名**：debug.keystore（与原版签名不同，需卸载原版后安装）
-
-## 文件说明
-
-| 文件 | 说明 |
+| 内容 | 用途 |
 |---|---|
-| `DroidDeck-0.3.0-zhCN-font.apk` | 汉化版 APK（45.4MB，含中文字体） |
-| `strings-zhCN.xml` | 完整中文资源文件（928 条，可直接用于从源码构建） |
-| `steam-l10n-terms.md` | Steam/DroidDeck 术语表（1200+ 条，翻译用） |
+| `steam-l10n-terms.md` | Steam / Proton / DXVK / Gamescope 等 **1200+ 条术语表**，翻译 Steam 生态任何东西都能用 |
+| `screenshots/` | 中文界面的效果参考图 |
+| `strings-zhCN.xml` | 完整的简体中文资源文件（历史版本，供参考） |
 
-## 从源码构建
+## 关于旧汉化包
 
-将 `strings-zhCN.xml` 复制到源码的 `app/src/main/res/values-zh-rCN/strings.xml`，然后按官方流程构建即可。
+`DroidDeck-0.3.0-zhCN-font.apk`（见 Releases）是**基于 0.3.0 的旧汉化包**，请**仅作存档参考**：
 
-## 声明
+- 基于 0.3.0，**不含官方后续版本的新功能**
+- 使用 debug 签名，安装前必须先卸载官方版
+- 官方新版已内置中文与字体，**没有任何理由再用它**
 
-- 本项目为 DroidDeck 的社区本地化衍生版，遵循 **GPL-3.0** 许可证
-- 原版版权归 [Droid-Deck](https://github.com/Droid-Deck/DroidDeck) 团队所有
-- 汉化部分（翻译字符串、术语表、字体注入补丁）由社区贡献
+## 官方中文化进展
+
+| 项目 | 状态 |
+|---|---|
+| [PR #232](https://github.com/Droid-Deck/DroidDeck/pull/232)（62 条翻译） | ✅ 已合并进 `main` |
+| 官方多语言方案（zh-rCN / zh-rTW / zh-rHK + 语言设置） | 上游开发中 |
+| 中文字体（共享 Android 系统 Noto，无需下载） | 上游开发中 |
 
 ## 致谢
 
-- 原版：[Droid-Deck/DroidDeck](https://github.com/Droid-Deck/DroidDeck)
-- 翻译术语：[steam-l10n](steam-l10n-terms.md) 自建术语表
-- 字体：[Noto Sans CJK SC](https://github.com/notofonts/noto-cjk) (SIL Open Font License)
+- 原版：[Droid-Deck/DroidDeck](https://github.com/Droid-Deck/DroidDeck)（GPL-3.0）
+- 字体：[Noto Sans CJK](https://github.com/notofonts/noto-cjk)（SIL Open Font License）
+- 术语参考：[steam-l10n](steam-l10n-terms.md)
